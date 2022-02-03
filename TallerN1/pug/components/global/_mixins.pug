@@ -1,0 +1,67 @@
+mixin titles(title)
+    title=title 
+
+mixin favicon(favicon, typeFavicon)
+    link(rel="shortcut icon" href=favicon type="image/"+typeFavicon) 
+
+mixin style-head(style)
+    link(rel="stylesheet", href="../css/"+style)
+
+mixin style-head-responsive(stylesResponsive, screen) 
+    link(rel="stylesheet", href="../css/"+stylesResponsive media="screen and (min-width:" +screen+"px)")
+
+mixin style-animations(animation)
+    link(rel="stylesheet", href="../css/"+animation media="screen and (prefers-reduced-motion: no-preference)")
+
+mixin figure-img(srcImg, altImg)
+    figure(class!=attributes.class)
+        img(src="https://drive.google.com/uc?id="+srcImg, alt=altImg)
+
+mixin theme-color-bar-navigator(color)
+    meta(name="theme-color" content=color)
+
+mixin favicon-navigator(favicon, typeImage)
+    link(rel="shortcut icon", href="https://drive.google.com/uc?id="+favicon, type="image/"+typeImage)
+
+mixin selection-charts(figureType, figureName, forLabel, valueRadio, idInput)  
+    label(for=forLabel).main__box-figures-label
+        input(type="radio", name=forLabel, id=idInput, value=valueRadio,onclick="addingDimensionBoxes()").main__box-figures-input
+        .main__box-figures-container
+            +geometric-figures(figureType)
+            p.box-figures__type=figureName
+
+mixin geometric-figures(figureType)
+    case figureType
+        when "square"
+            .figure-selector__square.figure-selector__square--white 
+        when "triangle"
+            .figure-selector__triangle.figure-selector__triangle--white
+        when "circle"
+            .figure-selector__circle.figure-selector__circle--white
+        when "rectangle"
+            .figure-selector__rectangle.figure-selector__rectangle--white
+        when "parallelogram"
+            .figure-selector__parallelogram.figure-selector__parallelogram--white
+        when "diamond"
+            .figure-selector__diamond.figure-selector__diamond--white
+        when "trapeze"
+            .figure-selector__trapeze.figure-selector__trapeze--white
+        when "polygon"
+            .figure-selector__polygon.figure-selector__polygon--white
+
+mixin measurement-tables(title, labelFor)
+    .insert-dimensions__box
+        h3.insert-dimensions__box-title=title
+        form(action="" onsubmit="return false").insert-dimensions__form 
+            label(for=labelFor).insert-dimensions__label 
+                input(type="number", name=labelFor, id=labelFor, placeholder="Medida").insert-dimensions__input
+
+
+mixin buttons-calculate(forLabel, valueInput, onclickInput)
+    label(for=forLabel) 
+        input(type="submit", value=valueInput, id=forLabel, onclick=onclickInput).insert-dimensions__calculate-dimentions
+
+mixin box-results(title, idP)
+    .insert-dimensions__box.result-box
+        h3.insert-dimensions__box-title.insert-dimensions__box-title--black=title
+        p.insert-dimensions__results(id=idP) Resultado

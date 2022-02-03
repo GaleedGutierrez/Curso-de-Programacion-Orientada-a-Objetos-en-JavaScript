@@ -1,0 +1,78 @@
+.insert-dimensions__tables-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 25.6rem);
+    grid-auto-rows: 10.3rem;
+    justify-content: center;
+    width: 100%;
+    gap: 1.2rem;
+}
+
+.insert-dimensions__box {
+    padding: 1.2rem;
+    border-radius: $border-radius-boxes;
+    background-color: $gray-plus-2;
+    box-shadow: $boxes-shadow3;
+}
+
+.insert-dimensions__box-title {
+    font-weight: 500;
+    color: $just-white;
+    text-align: start;
+}
+
+.insert-dimensions__form {
+    padding-block-start: 1.2rem;
+}
+
+.insert-dimensions__input {
+    font-weight: 500;
+    font-size: $medium;
+    text-align: center;
+    color: $just-white;
+    width: 23.2rem;
+    height: 3.6rem;
+    padding: 0 1.2rem;
+    border-radius: $border-radius-boxes;
+    background-color: $gray-plus-3;
+    box-shadow: $boxes-shadow2;
+
+    &::placeholder {
+        color: rgba($warm-gray, 0.4);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: grid;
+}
+
+.results-boxes-container {
+    @extend .insert-dimensions__tables-container;
+}
+
+.result-box {
+    @extend .insert-dimensions__box;
+    background-color: $just-white;
+    box-shadow: $boxes-shadow;
+}
+
+.insert-dimensions__box-title--black {
+    color: $warm-black;
+}
+
+.insert-dimensions__results {
+    @extend .insert-dimensions__input;
+    color: rgba($warm-gray, 0.4);
+    margin-block-start: 1.2rem;
+    border: 0.1rem solid $bitcoin-orange;
+    background-color: $off-white;
+    box-shadow: none;
+    @include all-center-flex;
+}
+
+.insert-dimensions__results--black {
+    color: $warm-black;
+}

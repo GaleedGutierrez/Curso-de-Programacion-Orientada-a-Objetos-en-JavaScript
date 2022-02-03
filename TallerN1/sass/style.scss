@@ -1,0 +1,118 @@
+@import "./components/global/global";
+@import "./components/global/header";
+@import "./components/global/footer";
+@import "./components/geometric-figures/geometric-figures";
+@import "./components/measurement-tables/measuremnet-tables";
+
+
+.main__figure-selector-container {
+    width: 100%;
+    height: 27.5rem;
+    padding: 5.2rem 1.2rem;
+}
+
+.main__box-figures-label {
+    position: relative;
+}
+
+.main__box-figures-input {
+    position: absolute;
+    z-index: 1;
+    width: 10.4rem;
+    height: 10.9rem;
+    opacity: 0;
+}
+
+.main__figure-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 10.4rem);
+    grid-template-rows: 10.9rem;
+    gap: 1.2rem;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.main__box-figures-container {
+    display: grid;
+    justify-items: center;
+    align-items: space-between;
+    gap: 1.6rem;
+    padding: 1.2rem 0;
+    border: 0.1rem solid $warm-gray;
+    border-radius: $border-radius-boxes;
+    box-shadow: $boxes-shadow;
+    @include transition-boxes-geometric-figures;
+}
+
+.main__box-figures-input:checked + .main__box-figures-container {
+    color: $just-white;
+    border-color: $bitcoin-orange;
+    background-color: $bitcoin-orange;
+    @include transition-boxes-geometric-figures;
+}
+
+.main__insert-dimensions {
+    display: grid;
+    position: relative;
+    padding: 5.2rem 2.8rem 3.2rem;
+    text-align: center;
+    color: $bitcoin-orange;
+    background-color: $warm-black;
+}
+
+.main__cube3d {
+    position: absolute;
+    bottom: calc(100% - 2.0005rem);
+    right: calc(50% - 1.75rem);
+    width: 3.5rem;
+    height: 4.001rem;
+}
+
+.insert-dimensions__title {
+    margin-block-end: 3.2rem;
+}
+
+.insert-dimensions__select-figure {
+    margin-block-end: 1.6rem;
+    color: $just-white;
+}
+
+.insert-dimensions__title--calculate {
+    margin: 1.6rem 0;
+}
+
+.insert-dimensions__form-calculate-dimentions{
+    display: flex;
+    justify-content: center;
+    gap: 3.2rem;
+    width: 100%;
+}
+
+.insert-dimensions__calculate-dimentions {
+    font-size: $large;
+    color: $just-white;
+    width: 13.6rem;
+    padding: 1.2rem;
+    border-radius: $border-radius-boxes;
+    background-color: $bitcoin-orange;
+
+    &:active {
+        background-color: $bitcoin-orange-dark;
+    }
+}
+
+.main__results {
+    text-align: center;
+    padding: 5.2rem 4.4rem 2rem;
+}
+
+.results__title {
+    margin-block-end: 2.8rem;
+}
+
+
+.results__clasify {
+    margin-block-start: 2rem;
+}
