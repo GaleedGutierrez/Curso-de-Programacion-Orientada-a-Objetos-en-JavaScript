@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://drive.google.com/uc?id=1MYXN5roVf_WyazK9F8LhUIIyDB7dEYPp" type="image/svg"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/../css/style.css"/>
+    <link rel="stylesheet" href="../css/../css/tablet.css" media="screen and (min-width:1024px)"/>
+    <link rel="stylesheet" href="../css/../css/desktop.css" media="screen and (min-width:1280px)"/>
+    <title>Figuras geométricas</title>
+  </head>
+  <body>
+    <header class="header">
+      <section class="header__logo-title-container">
+        <div class="header__logo-title">
+          <figure class="header__logo"><img src="https://drive.google.com/uc?id=1MYXN5roVf_WyazK9F8LhUIIyDB7dEYPp" alt="Page logo"/></figure>
+          <h1 class="header__title">Figuras geométricas</h1>
+        </div>
+      </section>
+      <p class="header__subtitle">Este es el primer taller del curso práctico de JavaScript</p>
+    </header>
+    <main class="main">
+      <section class="main__figure-selector-container">
+        <form class="main__figure-selector" action="" id="selectionCharts">
+          <label class="main__box-figures-label" for="figureSelected">
+            <input class="main__box-figures-input" type="radio" name="figureSelected" id="squareFigure" value="1" onclick="addingDimensionBoxes()"/>
+            <div class="main__box-figures-container">
+              <div class="figure-selector__square figure-selector__square--white"> </div>
+              <p class="box-figures__type">Cuadrado</p>
+            </div>
+          </label>
+          <label class="main__box-figures-label" for="figureSelected">
+            <input class="main__box-figures-input" type="radio" name="figureSelected" id="triangleFigure" value="2" onclick="addingDimensionBoxes()"/>
+            <div class="main__box-figures-container">
+              <div class="figure-selector__triangle figure-selector__triangle--white"></div>
+              <p class="box-figures__type">Triangulo</p>
+            </div>
+          </label>
+          <label class="main__box-figures-label" for="figureSelected">
+            <input class="main__box-figures-input" type="radio" name="figureSelected" id="circleFigure" value="3" onclick="addingDimensionBoxes()"/>
+            <div class="main__box-figures-container">
+              <div class="figure-selector__circle figure-selector__circle--white"></div>
+              <p class="box-figures__type">Circulo</p>
+            </div>
+          </label>
+          <label class="main__box-figures-label" for="figureSelected">
+            <input class="main__box-figures-input" type="radio" name="figureSelected" id="rectangleFigure" value="4" onclick="addingDimensionBoxes()"/>
+            <div class="main__box-figures-container">
+              <div class="figure-selector__rectangle figure-selector__rectangle--white"></div>
+              <p class="box-figures__type">Rectangulo</p>
+            </div>
+          </label>
+          <label class="main__box-figures-label" for="figureSelected">
+            <input class="main__box-figures-input" type="radio" name="figureSelected" id="parallelogramFigure" value="5" onclick="addingDimensionBoxes()"/>
+            <div class="main__box-figures-container">
+              <div class="figure-selector__parallelogram figure-selector__parallelogram--white"></div>
+              <p class="box-figures__type">Paralelogramo</p>
+            </div>
+          </label>
+          <label class="main__box-figures-label" for="figureSelected">
+            <input class="main__box-figures-input" type="radio" name="figureSelected" id="diamondFigure" value="6" onclick="addingDimensionBoxes()"/>
+            <div class="main__box-figures-container">
+              <div class="figure-selector__diamond figure-selector__diamond--white"></div>
+              <p class="box-figures__type">Rombo</p>
+            </div>
+          </label>
+          <label class="main__box-figures-label" for="figureSelected">
+            <input class="main__box-figures-input" type="radio" name="figureSelected" id="trapezeFigure" value="7" onclick="addingDimensionBoxes()"/>
+            <div class="main__box-figures-container">
+              <div class="figure-selector__trapeze figure-selector__trapeze--white"></div>
+              <p class="box-figures__type">Trapecio</p>
+            </div>
+          </label>
+          <label class="main__box-figures-label" for="figureSelected">
+            <input class="main__box-figures-input" type="radio" name="figureSelected" id="polygonFigure" value="8" onclick="addingDimensionBoxes()"/>
+            <div class="main__box-figures-container">
+              <div class="figure-selector__polygon figure-selector__polygon--white"></div>
+              <p class="box-figures__type">Polígono</p>
+            </div>
+          </label>
+        </form>
+      </section>
+      <section class="main__insert-dimensions">
+        <figure class="main__cube3d"><img src="https://drive.google.com/uc?id=1-33Ss5JWknwDMMEbcyUivr_nhpGwUDpE" alt="Cube icon"/></figure>
+        <h2 class="insert-dimensions__title">Medidas</h2>
+        <h2 class="insert-dimensions__select-figure" id="select-figure-text">Seleccione una figura de arriba para empezar</h2>
+        <div class="insert-dimensions__square insert-dimensions__tables-container hidden" id="measurement-square">
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lados</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-square-input"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-square-input" id="measurement-square-input" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="insert-dimensions__triangle insert-dimensions__tables-container hidden" id="measurement-triangle"> 
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lado A</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-triangle-input-side-A"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-triangle-input-side-A" id="measurement-triangle-input-side-A" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lado B</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-triangle-input-side-B"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-triangle-input-side-B" id="measurement-triangle-input-side-B" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lado C</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-triangle-input-side-C"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-triangle-input-side-C" id="measurement-triangle-input-side-C" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="insert-dimensions__circle insert-dimensions__tables-container hidden" id="measurement-circle"> 
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Radio</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-circle-input"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-circle-input" id="measurement-circle-input" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="insert-dimensions__rectangle insert-dimensions__tables-container hidden" id="measurement-rectangle"> 
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lado A</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-rectangle-input-side-A"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-rectangle-input-side-A" id="measurement-rectangle-input-side-A" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lado B</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-rectangle-input-side-B"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-rectangle-input-side-B" id="measurement-rectangle-input-side-B" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="insert-dimensions__parallelogram insert-dimensions__tables-container hidden" id="measurement-parallelogram"> 
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lado A</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-parallelogram-input-sideA"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-parallelogram-input-sideA" id="measurement-parallelogram-input-sideA" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Base</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-parallelogram-input-base"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-parallelogram-input-base" id="measurement-parallelogram-input-base" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Altura</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-parallelogram-input-height"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-parallelogram-input-height" id="measurement-parallelogram-input-height" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="insert-dimensions__diamond insert-dimensions__tables-container hidden" id="measurement-diamond"> 
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lados</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-diamond-input-sides"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-diamond-input-sides" id="measurement-diamond-input-sides" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Diagonal mayor</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-diamond-input-mayor-diagonal"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-diamond-input-mayor-diagonal" id="measurement-diamond-input-mayor-diagonal" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Diagonal menor</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-diamond-input-minor-diagonal"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-diamond-input-minor-diagonal" id="measurement-diamond-input-minor-diagonal" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="insert-dimensions__trapeze insert-dimensions__tables-container hidden" id="measurement-trapeze"> 
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lado A</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-trapeze-input-sideA"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-trapeze-input-sideA" id="measurement-trapeze-input-sideA" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lado b</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-trapeze-input-sideb"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-trapeze-input-sideb" id="measurement-trapeze-input-sideb" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lado B</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-trapeze-input-sideB"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-trapeze-input-sideB" id="measurement-trapeze-input-sideB" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lado C</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-trapeze-input-sideC"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-trapeze-input-sideC" id="measurement-trapeze-input-sideC" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Altura</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-trapeze-input-height"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-trapeze-input-height" id="measurement-trapeze-input-height" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="insert-dimensions__polygon insert-dimensions__tables-container hidden" id="measurement-polygon"> 
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Lados</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-polygon-input-sides"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-polygon-input-sides" id="measurement-polygon-input-sides" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Apotema</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-polygon-input-apothem"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-polygon-input-apothem" id="measurement-polygon-input-apothem" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+          <div class="insert-dimensions__box">
+            <h3 class="insert-dimensions__box-title">Número de lados</h3>
+            <form class="insert-dimensions__form" action="" onsubmit="return false"> 
+              <label class="insert-dimensions__label" for="measurement-polygon-input-number-sides"> 
+                <input class="insert-dimensions__input" type="number" name="measurement-polygon-input-number-sides" id="measurement-polygon-input-number-sides" placeholder="Medida"/>
+              </label>
+            </form>
+          </div>
+        </div>
+        <h2 class="insert-dimensions__title--calculate">Calcular</h2>
+        <form class="insert-dimensions__form-calculate-dimentions" action="" onsubmit="return false">
+          <label for="inputCalcuparePerimeter"> 
+            <input class="insert-dimensions__calculate-dimentions" type="submit" value="Perímetro" id="inputCalcuparePerimeter" onclick="calculatePerimeter()"/>
+          </label>
+          <label for="inputCalcupareArea"> 
+            <input class="insert-dimensions__calculate-dimentions" type="submit" value="Área" id="inputCalcupareArea" onclick="calculateArea()"/>
+          </label>
+        </form>
+      </section>
+      <section class="main__results"> 
+        <h2 class="results__title"> Resultados</h2>
+        <div class="results-boxes-container">
+          <div class="insert-dimensions__box result-box">
+            <h3 class="insert-dimensions__box-title insert-dimensions__box-title--black">Perímetro</h3>
+            <p class="insert-dimensions__results" id="result-perimeter">Resultado</p>
+          </div>
+          <div class="insert-dimensions__box result-box">
+            <h3 class="insert-dimensions__box-title insert-dimensions__box-title--black">Área</h3>
+            <p class="insert-dimensions__results" id="result-area">Resultado</p>
+          </div>
+        </div>
+        <p class="results__clasify">La “u” significa unidad de medida y corresponde a la que usted esté usando.  </p>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__creator">Creado por Galeed Gutierrez</p>
+    </footer>
+    <script src="../js/area.js"> </script>
+    <script src="../js/perimeter.js"> </script>
+    <script src="../js/results.js"> </script>
+    <script src="../js/visibleBoxes.js"> </script>
+    <script src="../js/figuresClasses.js"> </script>
+    <script src="../js/figures.js"> </script>
+    <script src="../js/setSides.js"> </script>
+  </body>
+</html>

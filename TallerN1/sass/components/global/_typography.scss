@@ -1,0 +1,26 @@
+// font family
+$font-primary: 'DM Sans', sans-serif;
+
+// font size
+$xx-small: 1.2rem;
+$x-small: 1.4rem;
+$small: 1.8rem;
+$medium: 2.2rem;
+$large: 2.4rem;
+$extra-large: 2.6rem;
+
+h1 {
+    font-size: $extra-large;
+}
+
+h2 {
+    font-size: $large;
+}
+
+h3 {
+    font-size: $medium;
+}
+
+p {
+    font-size: $x-small;
+}

@@ -1,0 +1,62 @@
+extend ./components/global/_global.pug
+block head
+    +style-head("../css/style.css")
+    +style-head-responsive("../css/tablet.css", "1024")
+    +style-head-responsive("../css/desktop.css", "1280")
+    +titles("Figuras geométricas")
+block main
+    main.main
+        section.main__figure-selector-container
+            form(action="")#selectionCharts.main__figure-selector
+                +selection-charts("square", "Cuadrado", "figureSelected", 1,"squareFigure")
+                +selection-charts("triangle", "Triangulo", "figureSelected", 2, "triangleFigure")
+                +selection-charts("circle", "Circulo", "figureSelected",3, "circleFigure")
+                +selection-charts("rectangle", "Rectangulo", "figureSelected", 4, "rectangleFigure")
+                +selection-charts("parallelogram", "Paralelogramo", "figureSelected", 5, "parallelogramFigure")
+                +selection-charts("diamond", "Rombo", "figureSelected", 6, "diamondFigure")
+                +selection-charts("trapeze", "Trapecio", "figureSelected", 7, "trapezeFigure")
+                +selection-charts("polygon", "Polígono", "figureSelected", 8, "polygonFigure")
+        section.main__insert-dimensions
+            +figure-img("1-33Ss5JWknwDMMEbcyUivr_nhpGwUDpE", "Cube icon").main__cube3d
+            h2.insert-dimensions__title Medidas
+            h2#select-figure-text.insert-dimensions__select-figure Seleccione una figura de arriba para empezar
+            #measurement-square.insert-dimensions__square.insert-dimensions__tables-container.hidden
+                +measurement-tables("Lados", "measurement-square-input")
+            #measurement-triangle.insert-dimensions__triangle.insert-dimensions__tables-container.hidden 
+                +measurement-tables("Lado A", "measurement-triangle-input-side-A")
+                +measurement-tables("Lado B", "measurement-triangle-input-side-B")
+                +measurement-tables("Lado C", "measurement-triangle-input-side-C")
+            #measurement-circle.insert-dimensions__circle.insert-dimensions__tables-container.hidden 
+                +measurement-tables("Radio", "measurement-circle-input")
+            #measurement-rectangle.insert-dimensions__rectangle.insert-dimensions__tables-container.hidden 
+                +measurement-tables("Lado A", "measurement-rectangle-input-side-A")
+                +measurement-tables("Lado B", "measurement-rectangle-input-side-B")
+            #measurement-parallelogram.insert-dimensions__parallelogram.insert-dimensions__tables-container.hidden 
+                +measurement-tables("Lado A", "measurement-parallelogram-input-sideA")
+                +measurement-tables("Base", "measurement-parallelogram-input-base")
+                +measurement-tables("Altura", "measurement-parallelogram-input-height")
+            #measurement-diamond.insert-dimensions__diamond.insert-dimensions__tables-container.hidden 
+                +measurement-tables("Lados", "measurement-diamond-input-sides")
+                +measurement-tables("Diagonal mayor", "measurement-diamond-input-mayor-diagonal")
+                +measurement-tables("Diagonal menor", "measurement-diamond-input-minor-diagonal")
+            #measurement-trapeze.insert-dimensions__trapeze.insert-dimensions__tables-container.hidden 
+                +measurement-tables("Lado A", "measurement-trapeze-input-sideA")
+                +measurement-tables("Lado b", "measurement-trapeze-input-sideb")
+                +measurement-tables("Lado B", "measurement-trapeze-input-sideB")
+                +measurement-tables("Lado C", "measurement-trapeze-input-sideC")
+                +measurement-tables("Altura", "measurement-trapeze-input-height")
+            #measurement-polygon.insert-dimensions__polygon.insert-dimensions__tables-container.hidden 
+                +measurement-tables("Lados", "measurement-polygon-input-sides")
+                +measurement-tables("Apotema", "measurement-polygon-input-apothem")
+                +measurement-tables("Número de lados", "measurement-polygon-input-number-sides")
+            h2.insert-dimensions__title--calculate Calcular
+            form(action="" onsubmit="return false").insert-dimensions__form-calculate-dimentions
+                +buttons-calculate("inputCalcuparePerimeter", "Perímetro", "calculatePerimeter()")
+                +buttons-calculate("inputCalcupareArea", "Área", "calculateArea()")
+        section.main__results 
+            h2.results__title  Resultados
+            .results-boxes-container
+                +box-results("Perímetro", "result-perimeter")
+                +box-results("Área", "result-area")
+            p.results__clasify La “u” significa unidad de medida y corresponde a la que usted esté usando.  
+

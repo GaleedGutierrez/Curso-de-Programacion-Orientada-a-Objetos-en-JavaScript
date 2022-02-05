@@ -1,0 +1,40 @@
+.header {
+    position: relative;
+    width: 100%;
+}
+
+.header__logo-title-container {
+    width: 100%;
+    height: 12.5rem;
+    padding-block-start: 2rem;
+    background: linear-gradient(78.85deg, $bitcoin-orange 5.81%, $warm-black 100.08%);
+}
+
+.header__logo-title {
+    gap: 1.2rem;
+    width: 100%;
+    height: 7.1rem;
+    @include all-center-flex;
+}
+
+.header__logo {
+    width: 6.846rem;
+    height: 7.1rem;
+}
+
+.header__title {
+    color: $just-white;
+}
+
+.header__subtitle {
+    position: absolute;
+    top: calc(100% - 2rem);
+    left: calc(50% - 17.25rem);
+    width: 34.5rem;
+    padding: 1.2rem;
+    font-weight: bold;
+    font-size: $xx-small;
+    border-radius: $border-radius-boxes;
+    background-color: $off-white;
+    box-shadow: $boxes-shadow;
+}
