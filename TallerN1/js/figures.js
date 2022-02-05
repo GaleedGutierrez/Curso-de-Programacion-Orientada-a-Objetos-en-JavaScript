@@ -15,6 +15,7 @@ class Figure {
     #numberSides;
     #area;
     #perimeter;
+    #radio;
     constructor (
         {
             type,
@@ -33,6 +34,7 @@ class Figure {
             numberSides = 0,
             area = 0,
             perimeter = 0, 
+            radio = 0
         }
     ) {
         this.#type = type;
@@ -51,6 +53,7 @@ class Figure {
         this.#numberSides = numberSides;
         this.#area = area;
         this.#perimeter = perimeter; 
+        this.#radio = radio;
     };
 
     get id () {
@@ -69,6 +72,10 @@ class Figure {
         return this.#sideA;
     };
 
+    get sideb () {
+        return this.#sideb;
+    };
+
     get sideB () {
         return this.#sideB;
     };
@@ -77,20 +84,36 @@ class Figure {
         return this.#sideC;
     };
 
-    set sideA (newSideA) {
-        return this.#sideA = newSideA;
+    get radio () {
+        return this.#radio;
     };
 
-    set sideB (newSideB) {
-        return this.#sideB = newSideB;
+    get base () {
+        return this.#base;
     };
 
-    set sideC (newSideC) {
-        return this.#sideC = newSideC;
+    get height () {
+        return this.#height;
+    };
+    
+    get mayorDiagonal () {
+        return this.#mayorDiagonal;
+    };
+    
+    get minorDiagonal () {
+        return this.#minorDiagonal;
     };
 
     get perimeter () {
         return this.#perimeter;
+    };
+
+    get apothem () {
+        return this.#apothem;
+    };
+    
+    get numberSides () {
+        return this.#numberSides;
     };
 
     set perimeter (newPerimeter) {
@@ -104,59 +127,137 @@ class Figure {
     set area (newArea) {
         return this.#area = newArea;
     };
-}
+};
 
 class Square extends Figure {
     constructor (parameters) {
         super(parameters);
-    }
+    };
     
     calculatePerimeter(sides) {
-        let {perimeter} = this;
-        perimeter = squareDiamondPerimeter(sides);
+        const perimeter = CalculateSquareDiamondPerimeter(sides);
         return perimeter;
-    }
+    };
 
     calculateArea(sides) {
-        let {area} = this;
-        area = sides ** 2;
+        const area = sides ** 2;
         return area;
-    }
-}
+    };
+};
 
 class Triangle extends Figure {
     constructor (parameters) {
         super(parameters);
-    }
+    };
     
     calculatePerimeter(sideA, sideB, sideC) {
-        let {perimeter} = this;
-        perimeter = calculateTrianglePerimeter(sideA, sideB, sideC);
+        const perimeter = calculateTrianglePerimeter(sideA, sideB, sideC);
         return perimeter;
-    }
+    };
 
     calculateArea(sideA, sideB, sideC) {
-        let {area} = this;
-        area = calculateTriangleArea(sideA, sideB, sideC);
+        const area = calculateTriangleArea(sideA, sideB, sideC);
         return area;
-    }
-}
+    };
+};
 
 class Circle extends Figure {
     constructor (parameters) {
         super(parameters);
-    }
+    };
     
-    calculatePerimeter() {
-        let {perimeter} = this;
-        
-    }
+    calculatePerimeter(radio) {
+        const perimeter = calculateCircumference(radio);
+        return perimeter;
+    };
 
-    calculateArea(sideA, sideB, sideC) {
-        let {area} = this;
-        
-    }
-}
+    calculateArea(radio) {
+        const area = calculateCircleArea(radio);
+        return area;
+    };
+};
+
+
+class Rectangle extends Figure {
+    constructor (parameters) {
+        super(parameters);
+    };
+    
+    calculatePerimeter(sideA, sideB) {
+        const perimeter = calculateRectangleParallelogramPerimeter(sideA, sideB);
+        return perimeter;
+    };
+
+    calculateArea(sideA, sideB) {
+        const area = calculateRectangleParallelogramArea(sideA, sideB) ;
+        return area;
+    };
+};
+
+class Parallelogram extends Figure {
+    constructor (parameters) {
+        super(parameters);
+    };
+    
+    calculatePerimeter(sideA, height) {
+        const perimeter = calculateRectangleParallelogramPerimeter(sideA, height);
+        return perimeter;
+    };
+
+    calculateArea(base, height) {
+        const area = calculateRectangleParallelogramArea(base, height);
+        return area;
+    };
+};
+
+class Diamond extends Figure {
+    constructor (parameters) {
+        super(parameters);
+    };
+    
+    calculatePerimeter(sides) {
+        const perimeter = CalculateSquareDiamondPerimeter(sides);
+        return perimeter;
+    };
+
+    calculateArea(mayor, minor) {
+        const area = calculateDiamondArea(mayor, minor);
+        return area;
+    };
+};
+
+class Trapeze extends Figure {
+    constructor (parameters) {
+        super(parameters);
+    };
+    
+    calculatePerimeter(sideA, sideB, sideC, sideD) {
+        const perimeter = calculateTrapezePerimeter(sideA, sideB, sideC, sideD);
+        return perimeter;
+    };
+
+    calculateArea(mayorBase, minorBase, height) {
+        const area = calculateTrapezeArea(mayorBase, minorBase, height);
+        return area;
+    };
+};
+
+class Polygon extends Figure {
+    constructor (parameters) {
+        super(parameters);
+    };
+    
+    calculatePerimeter(sidesPolygon, numberSidesPolygon){
+        const perimeter = calculatePolygonPerimeter(sidesPolygon, numberSidesPolygon)
+        return perimeter;
+    };
+
+    calculateArea(apothem, sidesPolygon, numberSidesPolygon) {
+        const perimeter = calculatePolygonPerimeter(sidesPolygon, numberSidesPolygon);
+        const area = calculatePolygonArea(perimeter, apothem);
+        return area;
+    };
+};
 
 const square = new Square(
     {
@@ -178,13 +279,78 @@ const triangle = new Triangle(
     }
 );
 
+const circle = new Circle(
+    {
+        type: 'Circle',
+        id: document.getElementById("circleFigure"),
+        boxesMeasurements: document.getElementById("measurement-circle"),
+        radio: document.getElementById("measurement-circle-input")
+    }
+);
+
+const rectangle = new Rectangle(
+    {
+        type: 'Rectangle',
+        id: document.getElementById("rectangleFigure"),
+        boxesMeasurements: document.getElementById("measurement-rectangle"),
+        sideA: document.getElementById("measurement-rectangle-input-side-A"),
+        sideB: document.getElementById("measurement-rectangle-input-side-B")
+    }
+);
+
+const parallelogram = new Rectangle(
+    {
+        type: 'Parallelogram',
+        id: document.getElementById("parallelogramFigure"),
+        boxesMeasurements: document.getElementById("measurement-parallelogram"),
+        sideA: document.getElementById("measurement-parallelogram-input-sideA"),
+        base: document.getElementById("measurement-parallelogram-input-base"),
+        height: document.getElementById("measurement-parallelogram-input-height"),
+    }
+);
+
+const diamond = new Diamond(
+    {
+        type: 'Diamond',
+        id: document.getElementById("diamondFigure"),
+        boxesMeasurements: document.getElementById("measurement-diamond"),
+        sides: document.getElementById("measurement-diamond-input-sides"),
+        mayorDiagonal: document.getElementById("measurement-diamond-input-mayor-diagonal"),
+        minorDiagonal: document.getElementById("measurement-diamond-input-minor-diagonal")
+    }
+);
+
+const trapeze = new Trapeze(
+    {
+        type: 'Trapeze',
+        id: document.getElementById("trapezeFigure"),
+        boxesMeasurements: document.getElementById("measurement-trapeze"),
+        sideA: document.getElementById("measurement-trapeze-input-sideA"),
+        sideb: document.getElementById("measurement-trapeze-input-sideb"),
+        sideB: document.getElementById("measurement-trapeze-input-sideB"),
+        sideC: document.getElementById("measurement-trapeze-input-sideC"),
+        height: document.getElementById("measurement-trapeze-input-height"),
+    }
+);
+
+const polygon = new Polygon(
+    {
+        type: 'Polygon',
+        id: document.getElementById("polygonFigure"),
+        boxesMeasurements: document.getElementById("measurement-polygon"),
+        sides: document.getElementById("measurement-polygon-input-sides"),
+        apothem: document.getElementById("measurement-polygon-input-apothem"),
+        numberSides: document.getElementById("measurement-polygon-input-number-sides")
+    }
+);
+
 const grupFigures = [
     square,
-    triangle
+    triangle,
+    circle,
+    rectangle,
+    parallelogram,
+    diamond,
+    trapeze,
+    polygon
 ];
-
-function seachFigureChecked(figure) {
-    if (figure.id.checked === true) {
-        return figure;
-    }
-}
