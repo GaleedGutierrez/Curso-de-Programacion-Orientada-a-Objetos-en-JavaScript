@@ -20,7 +20,5 @@ function haveDecimalNumbers(result) {
 }
 
 function addLitterBlack(paragraphResult) {
-    if (!paragraphResult.classList.contains("insert-dimensions__results--black")) {
-        paragraphResult.classList.add("insert-dimensions__results--black");
-    }
+    if (!paragraphResult.classList.contains("insert-dimensions__results--black")) paragraphResult.classList.add("insert-dimensions__results--black");
 }

@@ -2,7 +2,7 @@ const calculateCircleArea = radio => pi * radio ** 2;
 
 function calculateTriangleArea(sideA, sideB, sideC) {
     const semiPerimeter = calculateTrianglePerimeter(sideA, sideB, sideC) / 2;
-    const area = Math.sqrt(semiPerimeter*(semiPerimeter-sideA)*(semiPerimeter-sideB)*(semiPerimeter-sideC))
+    const area = Math.sqrt(semiPerimeter*(semiPerimeter-sideA)*(semiPerimeter-sideB)*(semiPerimeter-sideC));
     return area;
 }
 

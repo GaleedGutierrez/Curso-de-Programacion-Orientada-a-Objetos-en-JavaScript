@@ -3,8 +3,8 @@ const CalculateSquareDiamondPerimeter = side => side * 4;
 const calculateTrianglePerimeter = (side1, side2, base) => side1 + side2 + base;
 
 const calculateCircumference = radio => circumference(radio);
-const circleDiameter = (radio) => 2 * radio;
-const circumference = (radio) => pi * circleDiameter(radio);
+const circleDiameter = radio => 2 * radio;
+const circumference = radio => pi * circleDiameter(radio);
 
 const calculateRectangleParallelogramPerimeter = (sideA, sideB) => 2 * (sideA + sideB);
 
@@ -58,6 +58,6 @@ function calculatePerimeter() {
             perimeter = polygon.perimeter;
             break;
     }
-    
+
     showResultPerimeter(perimeter);
 }
